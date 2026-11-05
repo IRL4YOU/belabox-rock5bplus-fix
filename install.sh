@@ -155,20 +155,22 @@ do_fan() {
 
 do_wlan() {
   check_board; check_kernel
-  local dir=${WLAN_DIR:-$HERE/belabox-rtw89}
-  if [[ -f $dir/rtw89ctl.py ]]; then
-    echo "WLAN und Bluetooth: Paket gefunden in $dir."
-    ( cd "$dir" && python3 rtw89ctl.py check )
-    confirm "Treiber bauen und installieren (dauert einige Minuten)?" || { echo "Abgebrochen."; return 1; }
-    ( cd "$dir" \
-      && python3 rtw89ctl.py build --output /var/tmp/belabox-rtw89-build-1 \
-      && python3 rtw89ctl.py install --build-dir /var/tmp/belabox-rtw89-build-1 --accept-experimental )
-    echo "Jetzt neu starten: reboot"
-  else
-    echo "WLAN und Bluetooth: Paket nicht gefunden."
-    echo "Bitte von https://github.com/IRL4YOU/belabox-rtl8852be laden, entpacken und den Ordner belabox-rtw89"
-    echo "neben dieses Skript legen (oder WLAN_DIR=<Ordner> setzen), dann erneut: bash install.sh wlan"
-  fi
+  local tgz="$HERE/wlan/belabox-rtw89.tar.gz" sum="$HERE/wlan/belabox-rtw89.tar.gz.sha256" work want
+  [[ -f $tgz && -f $sum ]] || die "wlan/ fehlt. Bitte das Repository komplett herunterladen."
+  want=$(cut -d' ' -f1 < "$sum")
+  [[ $(sha < "$tgz") == "$want" ]] || die "Prüfsumme des WLAN-Pakets stimmt nicht. Bitte neu herunterladen."
+  command -v python3 >/dev/null 2>&1 || die "python3 fehlt."
+  work=$(mktemp -d "${TMPDIR:-/var/tmp}/pbfix-wlan-XXXXXX")
+  tar xzf "$tgz" -C "$work" || { rm -rf "$work"; die "WLAN-Paket konnte nicht entpackt werden."; }
+  echo "WLAN und Bluetooth: Prüfung"
+  ( cd "$work/belabox-rtw89" && python3 rtw89ctl.py check ) || { rm -rf "$work"; die "WLAN und Bluetooth passen nicht zu diesem System. Es wurde nichts geändert."; }
+  confirm "Treiber bauen und installieren (dauert einige Minuten)?" || { rm -rf "$work"; echo "Abgebrochen."; return 1; }
+  ( cd "$work/belabox-rtw89" \
+    && python3 rtw89ctl.py build --output "$work/build" \
+    && python3 rtw89ctl.py install --build-dir "$work/build" --accept-experimental ) \
+    || { rm -rf "$work"; die "WLAN und Bluetooth konnten nicht installiert werden."; }
+  rm -rf "$work"
+  echo "WLAN und Bluetooth installiert. Jetzt neu starten: reboot"
 }
 
 do_check() {
