@@ -7,4 +7,3 @@ bash install.sh kupfer    # Kupferkühler / copper cooler
 bash install.sh alu       # Aluminiumkühler / aluminium cooler
 ```
 
-Quelle, Kurven und Tests / source, curves and tests: https://github.com/IRL4YOU/rock5bplus-fan
