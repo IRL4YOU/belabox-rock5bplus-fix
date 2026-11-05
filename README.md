@@ -33,9 +33,9 @@ Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.d
 Auf der Box per SSH über LAN anmelden, als root:
 
 ```
-wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/archive/refs/heads/main.tar.gz
-tar xzf main.tar.gz
-cd belabox-rock5bplus-fix-main
+wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/releases/latest/download/belabox-rock5bplus-fix.tar.gz
+tar xzf belabox-rock5bplus-fix.tar.gz
+cd belabox-rock5bplus-fix
 bash install.sh
 ```
 
@@ -63,7 +63,7 @@ More information about the BELABOX and IRL4YOU: [irl4you.de](https://irl4you.de)
 
 ## Installing
 
-Log in to the box over SSH (LAN) as root: `wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/archive/refs/heads/main.tar.gz`, `tar xzf main.tar.gz`, `cd belabox-rock5bplus-fix-main`, `bash install.sh`. The script guides you step by step: install the bootloader (yes/no), install the fan control (yes/no, then `1` for copper or `2` for aluminium), install WLAN and Bluetooth (yes/no), then it shows your choice and asks once before it starts. It first checks that this is a ROCK 5B+ with the BELABOX image and the original BELABOX bootloader, otherwise it changes nothing. For the bootloader it backs up the card to `/var/tmp`, checks the result after writing and restores the backup itself on an error. Then `reboot`. If the box does not start, write the backup back on a computer or re-flash the BELABOX image; a new card always starts with the original.
+Log in to the box over SSH (LAN) as root: `wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/releases/latest/download/belabox-rock5bplus-fix.tar.gz`, `tar xzf belabox-rock5bplus-fix.tar.gz`, `cd belabox-rock5bplus-fix`, `bash install.sh`. The script guides you step by step: install the bootloader (yes/no), install the fan control (yes/no, then `1` for copper or `2` for aluminium), install WLAN and Bluetooth (yes/no), then it shows your choice and asks once before it starts. It first checks that this is a ROCK 5B+ with the BELABOX image and the original BELABOX bootloader, otherwise it changes nothing. For the bootloader it backs up the card to `/var/tmp`, checks the result after writing and restores the backup itself on an error. Then `reboot`. If the box does not start, write the backup back on a computer or re-flash the BELABOX image; a new card always starts with the original.
 
 ## License
 
