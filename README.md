@@ -25,7 +25,7 @@ Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.d
 ## Voraussetzungen
 
 - Radxa ROCK 5B+ mit dem BELABOX-Image 20250915 (Kernel 5.10.160-belabox).
-- Zugang per SSH über LAN als root, `python3` und `git` (oder das Repository als ZIP von GitHub laden und auf die Box kopieren).
+- Zugang per SSH über LAN als root, `python3`, `wget` und `tar` (sind auf der BELABOX vorhanden).
 - Für den Bootloader: der Original-Bootloader des BELABOX-Images. Das Skript prüft das selbst.
 
 ## Installation
@@ -33,8 +33,9 @@ Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.d
 Auf der Box per SSH über LAN anmelden, als root:
 
 ```
-git clone https://github.com/IRL4YOU/belabox-rock5bplus-fix
-cd belabox-rock5bplus-fix
+wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/archive/refs/heads/main.tar.gz
+tar xzf main.tar.gz
+cd belabox-rock5bplus-fix-main
 bash install.sh
 ```
 
@@ -58,11 +59,11 @@ Three fixes for the **BELABOX on the Radxa ROCK 5B+** (BELABOX image 20250915), 
 
 More information about the BELABOX and IRL4YOU: [irl4you.de](https://irl4you.de)
 
-**Who needs what:** *Freezes:* the box suddenly stops responding (no ping, SSH or web UI), nothing in the log, only a power cycle helps. *Fan and cooler:* quiet and cool operation with an aluminium or copper cooler. *WLAN and Bluetooth:* the board's WLAN is unreliable or Bluetooth finds no devices. **Requirements:** ROCK 5B+ with BELABOX image 20250915 (kernel 5.10.160-belabox), SSH access over LAN as root, `python3` and `git` (or download the repository as ZIP and copy it to the box), and for the bootloader the original BELABOX bootloader (the script checks this itself).
+**Who needs what:** *Freezes:* the box suddenly stops responding (no ping, SSH or web UI), nothing in the log, only a power cycle helps. *Fan and cooler:* quiet and cool operation with an aluminium or copper cooler. *WLAN and Bluetooth:* the board's WLAN is unreliable or Bluetooth finds no devices. **Requirements:** ROCK 5B+ with BELABOX image 20250915 (kernel 5.10.160-belabox), SSH access over LAN as root, `python3`, `wget` and `tar` (all present on the BELABOX), and for the bootloader the original BELABOX bootloader (the script checks this itself).
 
 ## Installing
 
-Log in to the box over SSH (LAN) as root: `git clone https://github.com/IRL4YOU/belabox-rock5bplus-fix`, `cd belabox-rock5bplus-fix`, `bash install.sh`. The script guides you step by step: install the bootloader (yes/no), install the fan control (yes/no, then `1` for copper or `2` for aluminium), install WLAN and Bluetooth (yes/no), then it shows your choice and asks once before it starts. It first checks that this is a ROCK 5B+ with the BELABOX image and the original BELABOX bootloader, otherwise it changes nothing. For the bootloader it backs up the card to `/var/tmp`, checks the result after writing and restores the backup itself on an error. Then `reboot`. If the box does not start, write the backup back on a computer or re-flash the BELABOX image; a new card always starts with the original.
+Log in to the box over SSH (LAN) as root: `wget https://github.com/IRL4YOU/belabox-rock5bplus-fix/archive/refs/heads/main.tar.gz`, `tar xzf main.tar.gz`, `cd belabox-rock5bplus-fix-main`, `bash install.sh`. The script guides you step by step: install the bootloader (yes/no), install the fan control (yes/no, then `1` for copper or `2` for aluminium), install WLAN and Bluetooth (yes/no), then it shows your choice and asks once before it starts. It first checks that this is a ROCK 5B+ with the BELABOX image and the original BELABOX bootloader, otherwise it changes nothing. For the bootloader it backs up the card to `/var/tmp`, checks the result after writing and restores the backup itself on an error. Then `reboot`. If the box does not start, write the backup back on a computer or re-flash the BELABOX image; a new card always starts with the original.
 
 ## License
 
