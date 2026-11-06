@@ -14,6 +14,8 @@ Drei Fixes für die **BELABOX auf der Radxa ROCK 5B+** (BELABOX-Image 20250915).
 
 Nicht für die Orange Pi 5 Plus und nicht für andere Images.
 
+Getestet: zweimal über 24 Stunden am Stück ohne Ausfall, mit vier Kameras und voller Sendung.
+
 Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.de/belabox-wlan-fix.html)
 
 ## Wer braucht was
@@ -55,7 +57,7 @@ Eigener Teil (Skript, Beschreibung, Zusammenstellung): [CC BY-ND 4.0](LICENSE) m
 
 # ROCK 5B+: three fixes for the BELABOX
 
-Three fixes for the **BELABOX on the Radxa ROCK 5B+** (BELABOX image 20250915), each installable on its own: **freezes** (newer memory firmware in the bootloader), **fan and cooler** (fan control for aluminium and copper coolers) and **WLAN and Bluetooth** (the original shows the WLAN twice and Bluetooth finds no devices; with the fix there is one WLAN and one working Bluetooth, as it should be; newer driver for the onboard RTL8852BE, in `wlan/`). Not for the Orange Pi 5 Plus or other images.
+Three fixes for the **BELABOX on the Radxa ROCK 5B+** (BELABOX image 20250915), each installable on its own: **freezes** (newer memory firmware in the bootloader), **fan and cooler** (fan control for aluminium and copper coolers) and **WLAN and Bluetooth** (the original shows the WLAN twice and Bluetooth finds no devices; with the fix there is one WLAN and one working Bluetooth, as it should be; newer driver for the onboard RTL8852BE, in `wlan/`). Not for the Orange Pi 5 Plus or other images. Tested: twice for more than 24 hours in a row without a failure, with four cameras and a full stream.
 
 More information about the BELABOX and IRL4YOU: [irl4you.de](https://irl4you.de/belabox-wlan-fix.html)
 
