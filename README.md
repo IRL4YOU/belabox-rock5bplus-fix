@@ -14,7 +14,7 @@ Drei Fixes für die **BELABOX auf der Radxa ROCK 5B+** (BELABOX-Image 20250915).
 
 Nicht für die Orange Pi 5 Plus und nicht für andere Images.
 
-Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.de)
+Weitere Informationen zur BELABOX und zu IRL4YOU: [irl4you.de](https://irl4you.de/belabox-wlan-fix.html)
 
 ## Wer braucht was
 
@@ -57,7 +57,7 @@ Eigener Teil (Skript, Beschreibung, Zusammenstellung): [CC BY-ND 4.0](LICENSE) m
 
 Three fixes for the **BELABOX on the Radxa ROCK 5B+** (BELABOX image 20250915), each installable on its own: **freezes** (newer memory firmware in the bootloader), **fan and cooler** (fan control for aluminium and copper coolers) and **WLAN and Bluetooth** (the original shows the WLAN twice and Bluetooth finds no devices; with the fix there is one WLAN and one working Bluetooth, as it should be; newer driver for the onboard RTL8852BE, in `wlan/`). Not for the Orange Pi 5 Plus or other images.
 
-More information about the BELABOX and IRL4YOU: [irl4you.de](https://irl4you.de)
+More information about the BELABOX and IRL4YOU: [irl4you.de](https://irl4you.de/belabox-wlan-fix.html)
 
 **Who needs what:** *Freezes:* the box suddenly stops responding (no ping, SSH or web UI), nothing in the log, only a power cycle helps. *Fan and cooler:* quiet and cool operation with an aluminium or copper cooler. *WLAN and Bluetooth:* the board's WLAN is unreliable or Bluetooth finds no devices. **Requirements:** ROCK 5B+ with BELABOX image 20250915 (kernel 5.10.160-belabox), SSH access over LAN as root, `python3`, `wget` and `tar` (all present on the BELABOX), and for the bootloader the original BELABOX bootloader (the script checks this itself).
 
